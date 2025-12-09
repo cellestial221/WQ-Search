@@ -1,0 +1,5 @@
+streamlit>=1.28.0
+requests>=2.31.0
+pandas>=2.0.0
+eldar>=0.0.8
+unidecode>=1.3.0
