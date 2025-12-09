@@ -57,9 +57,9 @@ QUESTIONS_ENDPOINT = "/api/writtenquestions/questions"
 REQUEST_DELAY_LIST = 0.3  # Delay between list pagination requests
 
 # Parallel fetching configuration
-PARALLEL_WORKERS = 6  # Number of concurrent requests for detail fetching
+PARALLEL_WORKERS = 8  # Number of concurrent requests for detail fetching
 CHUNK_SIZE = 70  # Number of questions to fetch per chunk
-CHUNK_DELAY = 0.4  # Seconds to pause between chunks
+CHUNK_DELAY = 0.2  # Seconds to pause between chunks
 RATE_LIMIT_BACKOFF = 5.0  # Seconds to pause when rate limited
 REQUEST_DELAY_DETAIL = 0.05  # Small delay between individual detail requests
 
