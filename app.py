@@ -460,12 +460,19 @@ def create_searchable_text(question: Dict[str, Any]) -> str:
 def create_query(query_string: str, ignore_case: bool = True) -> Query:
     """Create a Query object with appropriate parameters for the library version."""
     try:
-        return Query(query_string, ignore_case=ignore_case, ignore_accent=True)
+        # Added match_word=False to stop tokenisation, allowing phrases and wildcards to work
+        return Query(query_string, ignore_case=ignore_case, ignore_accent=True, match_word=False)
     except TypeError:
         try:
-            return Query(query_string, ignore_case=ignore_case)
+            # Fallback for different eldar versions
+            return Query(query_string, ignore_case=ignore_case, match_word=False)
         except TypeError:
-            return Query(query_string)
+            try:
+                # Basic fallback with match_word=False
+                return Query(query_string, match_word=False)
+            except TypeError:
+                # Ultimate fallback if the installed version doesn't support the parameter at all
+                return Query(query_string)
 
 
 def create_search_query(query_string: str, ignore_case: bool = True):
